@@ -1,29 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white"
-  })
+export default function About(props) {
 
-  const [btnText, setBtnText] = useState("Dark Mode")
-
-  const toggleStyle = () => {
-    if (myStyle.color === 'black') {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "1px solid white"
-      })
-      setBtnText("Light Mode")
-    } else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white"
-      })
-      setBtnText("Dark Mode")
-    }
+  let myStyle = {
+    color: props.mode === 'dark' ? 'white' : 'black',
+    backgroundColor : props.mode === 'dark' ? 'black' : 'white'
   }
+
   return (
     <div className="container" style={myStyle}>
       <h2>About Us</h2>
@@ -73,13 +56,6 @@ export default function About() {
               And lastly, the placeholder content htmlFor the third and final accordion panel. This panel is hidden by default.
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="container mx-3 my-3">
-        <div className="custom-control custom-switch">
-          <input type="checkbox" className="custom-control-input" onClick={toggleStyle} id="customSwitch1" />
-          <label className="custom-control-label" htmlFor="customSwitch1">{btnText}</label>
         </div>
       </div>
     </div>
